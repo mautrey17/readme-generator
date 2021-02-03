@@ -1,0 +1,23 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "Command line application to create README.md for projects based on user needs and input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mautrey17/readme-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mautrey17/readme-generator/issues"
+  },
+  "homepage": "https://github.com/mautrey17/readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
