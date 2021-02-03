@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { listenerCount } = require('events');
 
 const questions = [
     {
@@ -41,9 +42,26 @@ const questions = [
         type: 'input',
         message: 'What is your email?',
         name: 'email'
+    },
+    {
+        type: 'list',
+        message: 'Which type of license would you like?',
+        name: 'license',
+        choices: ['Apache License 2.0', 'ISC License', 'MIT License', 'GNU General Public License v2.0', 'No license']
     }
 ]
 
+const getLicense = license =>{
+    switch(license){
+        case 'Apache License 2.0':
+            return '![License: Apache License 2.0](https://img.shields.io/badge/license-Apache-brightgreen.svg)';
+        default:
+            console.log('no license selected')
+            return '';
+    }
+}
+
 inquirer.prompt(questions).then(response =>{
-    fs.writeFileSync('README.md', 'super cool response will go here')
+    fs.writeFileSync('sample.txt', 'super cool response will go here');
+    console.log(response);
 })
