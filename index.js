@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { listenerCount } = require('events');
+// const { listenerCount } = require('events');
 
 const questions = [
     {
@@ -54,7 +54,17 @@ const questions = [
 const getLicense = license =>{
     switch(license){
         case 'Apache License 2.0':
-            return '![License: Apache License 2.0](https://img.shields.io/badge/license-Apache-brightgreen.svg)';
+            return '[![License: Apache License 2.0](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://choosealicense.com/licenses/apache-2.0/)';
+            break;
+        case 'ISC License':
+            return '[![License: ISC License](https://img.shields.io/badge/license-ISC%20License-blue)](https://choosealicense.com/licenses/isc/)';
+            break;
+        case 'MIT License': 
+            return '[![License: ISC License](https://img.shields.io/badge/license-MIT%20License-red)](https://choosealicense.com/licenses/mit/)';
+            break;
+        case 'MIT License': 
+            return '[![License: ISC License](https://img.shields.io/badge/license-GNU%20GPL%20v3-orange)](https://choosealicense.com/licenses/gpl-2.0/)';
+            break;
         default:
             console.log('no license selected')
             return '';
@@ -64,8 +74,7 @@ const getLicense = license =>{
 inquirer.prompt(questions).then(response =>{
     fs.writeFileSync('sample.md', `# ${response.title}
 
-[![License](${response.license})](https://opensource.org/licenses/Apache-2.0)
-
+${getLicense(response.license)}
 
 
 ## Table of Contents
@@ -80,7 +89,7 @@ inquirer.prompt(questions).then(response =>{
 ${response.description}
 
 ## Installation
-In order to install the application, follow these steps:
+In order to install the application, follow these steps: 
 ${response.installation}
 
 ## Usage
@@ -98,7 +107,7 @@ ${response.test}
 
 ## Questions
 You can find my other applications on my github page
-Github: [${response.github}](https://github.com/${response.github})
+Github: [${response.github}](https://github.com/${response.github}) 
 Or you can email me at: ${response.email}`);
     console.log(response);
 })
