@@ -45,5 +45,5 @@ const questions = [
 ]
 
 inquirer.prompt(questions).then(response =>{
-    console.log(response);
+    fs.writeFileSync('README.md', 'super cool response will go here')
 })
