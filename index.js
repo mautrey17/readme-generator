@@ -62,6 +62,43 @@ const getLicense = license =>{
 }
 
 inquirer.prompt(questions).then(response =>{
-    fs.writeFileSync('sample.txt', 'super cool response will go here');
+    fs.writeFileSync('sample.md', `# ${response.title}
+
+[![License](${response.license})](https://opensource.org/licenses/Apache-2.0)
+
+
+
+## Table of Contents
+1. [Description](#Description)
+2. [Installation](#Installation)
+3. [Usage](#Usage)
+4. [License](#License)
+5. [Contributing](#Contributing)
+6. [Questions](#Questions)
+
+## Description
+${response.description}
+
+## Installation
+In order to install the application, follow these steps:
+${response.installation}
+
+## Usage
+${response.usage}
+
+## License
+This application is protected under ${response.license}
+
+## Contributing
+${response.contribution}
+
+## Tests
+In order to test the application, follow these steps:
+${response.test}
+
+## Questions
+You can find my other applications on my github page
+Github: [${response.github}](https://github.com/${response.github})
+Or you can email me at: ${response.email}`);
     console.log(response);
 })
