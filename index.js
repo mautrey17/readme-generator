@@ -1,7 +1,8 @@
+//required node packages
 const inquirer = require("inquirer");
 const fs = require("fs");
-// const { listenerCount } = require('events');
 
+//list of questions to build README
 const questions = [
   {
     type: "input",
@@ -57,6 +58,7 @@ const questions = [
   },
 ];
 
+//function to get badge for license
 const getLicense = (license) => {
   switch (license) {
     case "Apache License 2.0":
@@ -73,6 +75,7 @@ const getLicense = (license) => {
   }
 };
 
+//function to generate text for README
 const generateReadme = (response) => `# ${response.title}
 
 ${getLicense(response.license)}
@@ -105,13 +108,16 @@ ${response.contribution}
 
 ## Tests
 In order to test the application, follow these steps:
+
 ${response.test}
 
 ## Questions
 You can find my other applications on my github page
 Github: [${response.github}](https://github.com/${response.github}) 
+
 Or you can email me at: ${response.email}`;
 
+//wrap everything in a function to launch when executed
 const init = () => {
   inquirer.prompt(questions).then((response) => {
     fs.writeFileSync("README.md", generateReadme(response));
@@ -119,4 +125,5 @@ const init = () => {
   });
 };
 
+//run the application
 init();
